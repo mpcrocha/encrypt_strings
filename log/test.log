@@ -1,0 +1,1666 @@
+  [1m[36m (115.7ms)[0m  [1mDROP DATABASE IF EXISTS "interview-project_test"[0m
+  [1m[35m (299.5ms)[0m  CREATE DATABASE "interview-project_test" ENCODING = 'unicode'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (10.7ms)[0m  CREATE TABLE "data_encrypting_keys" ("id" serial primary key, "encrypted_key" character varying, "primary" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (7.4ms)[0m  [1mCREATE TABLE "encrypted_strings" ("id" serial primary key, "encrypted_value" character varying, "encrypted_value_iv" character varying, "encrypted_value_salt" character varying, "data_encrypting_key_id" integer, "token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.5ms)[0m  CREATE  INDEX  "index_encrypted_strings_on_data_encrypting_key_id" ON "encrypted_strings" USING btree ("data_encrypting_key_id")
+  [1m[36m (5.0ms)[0m  [1mCREATE  INDEX  "index_encrypted_strings_on_token" ON "encrypted_strings" USING btree ("token")[0m
+  [1m[35m (14.4ms)[0m  ALTER TABLE "encrypted_strings" ADD CONSTRAINT "fk_rails_97c52e94dc"
+FOREIGN KEY ("data_encrypting_key_id")
+  REFERENCES "data_encrypting_keys" ("id")
+
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (3.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (1.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20170718202445')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20170718201911')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (19.4ms)[0m  ALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.5ms)[0m  DELETE FROM "data_encrypting_keys"
+  [1m[36mFixture Insert (10.2ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)[0m
+  [1m[35mFixture Insert (0.7ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)
+  [1m[36m (0.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (4.1ms)[0m  ALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.9ms)[0m  [1mDELETE FROM "data_encrypting_keys"[0m
+  [1m[35mFixture Insert (0.9ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)
+  [1m[36mFixture Insert (0.8ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)[0m
+  [1m[35m (7.2ms)[0m  ROLLBACK
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.9ms)[0m  ALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.1ms)[0m  DELETE FROM "data_encrypting_keys"
+  [1m[36mFixture Insert (0.9ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)
+  [1m[36m (1.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  ALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.7ms)[0m  BEGIN
+  [1m[36mFixture Delete (1.8ms)[0m  [1mDELETE FROM "data_encrypting_keys"[0m
+  [1m[35mFixture Insert (1.3ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (4.8ms)[0m  [1mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  ALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.3ms)[0m  DELETE FROM "data_encrypting_keys"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)[0m
+  [1m[35mFixture Insert (0.9ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)
+  [1m[36m (2.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (31.6ms)[0m  ALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (3.1ms)[0m  [1mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  BEGIN
+  [1m[36mFixture Delete (1.5ms)[0m  [1mDELETE FROM "data_encrypting_keys"[0m
+  [1m[35mFixture Insert (1.6ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (3.3ms)[0m  ALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.9ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "data_encrypting_keys"
+  [1m[36mFixture Insert (0.8ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (3.6ms)[0m  ALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36mFixture Delete (1.8ms)[0m  [1mDELETE FROM "data_encrypting_keys"[0m
+  [1m[35mFixture Insert (1.3ms)[0m  INSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 980190962)
+  [1m[36mFixture Insert (0.9ms)[0m  [1mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2019-05-15 01:20:24', '2019-05-15 01:20:24', 298486374)[0m
+  [1m[35m (1.1ms)[0m  ROLLBACK
+  [1m[36m (1.6ms)[0m  [1mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'data_encrypting_keys'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'encrypted_strings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'data_encrypting_keys'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'encrypted_strings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (11.1ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:42:09.778679', '2019-05-15 01:42:09.778679'), (298486374, 'MyString', FALSE, '2019-05-15 01:42:09.778679', '2019-05-15 01:42:09.778679');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:42:09.790957', '2019-05-15 01:42:09.790957'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:42:09.790957', '2019-05-15 01:42:09.790957')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (47.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3140491916385815670)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-05-15 01:42:41.269902"], ["updated_at", "2019-05-15 01:42:41.269902"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3140491916385815670)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.4ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:42:48.242142', '2019-05-15 01:42:48.242142'), (298486374, 'MyString', FALSE, '2019-05-15 01:42:48.242142', '2019-05-15 01:42:48.242142');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:42:48.244942', '2019-05-15 01:42:48.244942'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:42:48.244942', '2019-05-15 01:42:48.244942')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.3ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:48:08.298653', '2019-05-15 01:48:08.298653'), (298486374, 'MyString', FALSE, '2019-05-15 01:48:08.298653', '2019-05-15 01:48:08.298653');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:48:08.303384', '2019-05-15 01:48:08.303384'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:48:08.303384', '2019-05-15 01:48:08.303384')[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.5ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:50:35.673433', '2019-05-15 01:50:35.673433'), (298486374, 'MyString', FALSE, '2019-05-15 01:50:35.673433', '2019-05-15 01:50:35.673433');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:50:35.676844', '2019-05-15 01:50:35.676844'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:50:35.676844', '2019-05-15 01:50:35.676844')[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (3.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.9ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:52:28.434458', '2019-05-15 01:52:28.434458'), (298486374, 'MyString', FALSE, '2019-05-15 01:52:28.434458', '2019-05-15 01:52:28.434458');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:52:28.440155', '2019-05-15 01:52:28.440155'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:52:28.440155', '2019-05-15 01:52:28.440155')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (17.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (57.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (4.0ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 01:52:54.632887', '2019-05-15 01:52:54.632887'), (298486374, 'MyString', FALSE, '2019-05-15 01:52:54.632887', '2019-05-15 01:52:54.632887');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:52:54.640246', '2019-05-15 01:52:54.640246'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 01:52:54.640246', '2019-05-15 01:52:54.640246')[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (6.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (3.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (3.4ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:03:07.895071', '2019-05-15 02:03:07.895071'), (298486374, 'MyString', FALSE, '2019-05-15 02:03:07.895071', '2019-05-15 02:03:07.895071');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:03:07.902780', '2019-05-15 02:03:07.902780'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:03:07.902780', '2019-05-15 02:03:07.902780')[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.4ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:06:54.489951', '2019-05-15 02:06:54.489951'), (298486374, 'MyString', FALSE, '2019-05-15 02:06:54.489951', '2019-05-15 02:06:54.489951');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:06:54.498919', '2019-05-15 02:06:54.498919'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:06:54.498919', '2019-05-15 02:06:54.498919')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (4.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.0ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:07:13.457869', '2019-05-15 02:07:13.457869'), (298486374, 'MyString', FALSE, '2019-05-15 02:07:13.457869', '2019-05-15 02:07:13.457869');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:07:13.460804', '2019-05-15 02:07:13.460804'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:07:13.460804', '2019-05-15 02:07:13.460804')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.8ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:07:58.782226', '2019-05-15 02:07:58.782226'), (298486374, 'MyString', FALSE, '2019-05-15 02:07:58.782226', '2019-05-15 02:07:58.782226');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:07:58.785292', '2019-05-15 02:07:58.785292'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:07:58.785292', '2019-05-15 02:07:58.785292')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.7ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:11:15.138505', '2019-05-15 02:11:15.138505'), (298486374, 'MyString', FALSE, '2019-05-15 02:11:15.138505', '2019-05-15 02:11:15.138505');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:11:15.142459', '2019-05-15 02:11:15.142459'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:11:15.142459', '2019-05-15 02:11:15.142459')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.7ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "mL0e2mOXEhsKEn+pmtq+diiUDaWh7b41yKiBrv5S1tyfOniMlrJy8EBEZhP7\nde21\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.296728"], ["updated_at", "2019-05-15 02:11:15.296728"]]
+  [1m[35m (2.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "3gtgNBcCDJ+EWUxgGPo75aqVlnLFHdfUucFK59ivgVZrNZ8ZOes0jZcL3crS\nardU\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.308338"], ["updated_at", "2019-05-15 02:11:15.308338"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "Qn+OhDKeKSAE+bGyi1nbY4IaAZp1iUw2pqHHhTDSG7GsIrSaC0zFjVBKiEyq\n4hdq\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.314892"], ["updated_at", "2019-05-15 02:11:15.314892"]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (3.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.6ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "2ezhjv2KjixFSNaVCpE3UQQJ0/QLNNHkiDO979r9VeJSt8jAgOS9ASVjgiwP\nxFje\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.446220"], ["updated_at", "2019-05-15 02:11:15.446220"]]
+  [1m[35m (1.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (5.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (3.2ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "gPk93ByxVSoVGuZgZcemjZmXKJJUDLRHlxJGaiYCLMmKvAouL7YpVEsMDPW2\ndjDI\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.469896"], ["updated_at", "2019-05-15 02:11:15.469896"]]
+  [1m[35m (1.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.4ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.2ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "1d07df43aa4c360284d8646d94d81b12"]]
+  [1m[36mEncryptedString Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "1d07df43aa4c360284d8646d94d81b12"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (8.0ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "PFiawNyDxugA6khv6Q/ffx0KhadSg7/vBoYO2fBOofo=\n"], ["encrypted_value_iv", "1Pt4JqJ+Vk7OsHNX\n"], ["encrypted_value_salt", "_5mZw2dOkNKqVuhsJM/M5WQ==\n"], ["data_encrypting_key_id", 980190967], ["token", "1d07df43aa4c360284d8646d94d81b12"], ["created_at", "2019-05-15 02:11:15.509855"], ["updated_at", "2019-05-15 02:11:15.509855"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "WSBqYzwuZaA3oPR7XjL7mB/qsEuHbbPyAr38Q92B8uCCYE2GZi77IkSvjtc+\nBmgh\n"], ["primary", true], ["created_at", "2019-05-15 02:11:15.525033"], ["updated_at", "2019-05-15 02:11:15.525033"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "1da3e6f8cf7ebc55041568257095994a"]]
+  [1m[36mEncryptedString Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "1da3e6f8cf7ebc55041568257095994a"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.3ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "K8NLNzF8IEV/QqTnTomii0BW1A11HoaKMBcNdkV6Urc=\n"], ["encrypted_value_iv", "vcIw0jTGVjm0r50l\n"], ["encrypted_value_salt", "_y7YkhUAtCtgRi6PIYS1sDg==\n"], ["data_encrypting_key_id", 980190968], ["token", "1da3e6f8cf7ebc55041568257095994a"], ["created_at", "2019-05-15 02:11:15.535676"], ["updated_at", "2019-05-15 02:11:15.535676"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "5ytCsc+Zwe1ZKjf/4QIGc7XzWV5UspQ8juRwlbiRomuee0W0eTXNMdwWztaI\nhC04\n"], ["created_at", "2019-05-15 02:11:15.543423"], ["updated_at", "2019-05-15 02:11:15.543423"]]
+  [1m[35m (1.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.1ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:14:34.028330', '2019-05-15 02:14:34.028330'), (298486374, 'MyString', FALSE, '2019-05-15 02:14:34.028330', '2019-05-15 02:14:34.028330');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:14:34.033817', '2019-05-15 02:14:34.033817'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:14:34.033817', '2019-05-15 02:14:34.033817')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "T73xjx291o5bwEk09+a7OPMdowI2ANT2spoGWrLp3JOaByNNbPnRER4OuI/S\n72gg\n"], ["created_at", "2019-05-15 02:14:34.083417"], ["updated_at", "2019-05-15 02:14:34.083417"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "wXzqhNPUE7X8WH7nxHQChMR6sfBQoQsDYwy+4MR3zYqsPyI0kqx2yrTdpkXC\nSws5\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.183735"], ["updated_at", "2019-05-15 02:14:34.183735"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "TN80eevNK6GV/yEFy++Ungx1/VvkynqVz8mBWhDe0JhvO0+WCXNgYVyDwQAC\nL0y2\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.194065"], ["updated_at", "2019-05-15 02:14:34.194065"]]
+  [1m[35m (1.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (2.5ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "wqKEm8vol4vIKenvfElsKd+qVHPAkssz3NsPqv/s3xoPZgQS4khPYOc4+zPQ\nkaS4\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.243572"], ["updated_at", "2019-05-15 02:14:34.243572"]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.1ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "655f8c4eb74bdc170267fce90853a0ac"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "655f8c4eb74bdc170267fce90853a0ac"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.9ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "/DOQTO6SLqryZc8GqvNhF6gzGE6eT2FG1a4eSZTh6Xk=\n"], ["encrypted_value_iv", "KNV7tTAaIJ+4MPbx\n"], ["encrypted_value_salt", "_4g91ffRouGTwCp7q9G+gGg==\n"], ["data_encrypting_key_id", 980190966], ["token", "655f8c4eb74bdc170267fce90853a0ac"], ["created_at", "2019-05-15 02:14:34.278489"], ["updated_at", "2019-05-15 02:14:34.278489"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "ut4W6rAUCPuvhK7tnP+C9TBIVXzHmaKSNVmxdj+JlT7PruYt4CsFKmTlHHHH\nDuqI\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.286808"], ["updated_at", "2019-05-15 02:14:34.286808"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "d7c8c47ccdf434bf6bd84b127d6b373d"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "d7c8c47ccdf434bf6bd84b127d6b373d"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.2ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "G8mky82WHQwkVallJSmQIl/4nzSACUcWffLeGGp39gc=\n"], ["encrypted_value_iv", "TeW/wAbjYDl1nLvR\n"], ["encrypted_value_salt", "_z2TtJHDR9hVwQZwg7hbEWQ==\n"], ["data_encrypting_key_id", 980190967], ["token", "d7c8c47ccdf434bf6bd84b127d6b373d"], ["created_at", "2019-05-15 02:14:34.297083"], ["updated_at", "2019-05-15 02:14:34.297083"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.6ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "HJdhQN/zZCdH7xLDzDzKtLuXFI/9N5c4vEs0DC7YO2EnKoeFYVzIl7z8dcw7\nGc5T\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.305230"], ["updated_at", "2019-05-15 02:14:34.305230"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "HJk1N5Dg587hk/te+il/XzPdA24aFWnaN78rU+DcKd2bh3dm5IoZ0SHvkwhQ\nD56g\n"], ["primary", true], ["created_at", "2019-05-15 02:14:34.312892"], ["updated_at", "2019-05-15 02:14:34.312892"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.1ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:15:53.795920', '2019-05-15 02:15:53.795920'), (298486374, 'MyString', FALSE, '2019-05-15 02:15:53.795920', '2019-05-15 02:15:53.795920');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:15:53.799420', '2019-05-15 02:15:53.799420'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:15:53.799420', '2019-05-15 02:15:53.799420')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "nxm/oQmprbZgu+X9V2VpPLSINO0F2eoXgE0pJXYgExSVBfUHX1SmKb0WDuGY\n/cHg\n"], ["created_at", "2019-05-15 02:15:53.837625"], ["updated_at", "2019-05-15 02:15:53.837625"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "IRFaILO4yZ9WJoTdzTjpn6UM5Tn7eJVFDAi6kV+XvcHNa6swdHqpNOow9keM\nCmAz\n"], ["primary", true], ["created_at", "2019-05-15 02:15:53.935755"], ["updated_at", "2019-05-15 02:15:53.935755"]]
+  [1m[35m (4.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (2.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "m4F6g9w58QGXzMP6TwDOmHu5ICFFXWNg5Y4ga2kzP5smGf5zLdWkdVCgWAQm\nG1ov\n"], ["primary", true], ["created_at", "2019-05-15 02:15:53.949842"], ["updated_at", "2019-05-15 02:15:53.949842"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.9ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "148a86027ccc72db8fc26aa21702dcce"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "148a86027ccc72db8fc26aa21702dcce"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.1ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "qJw6ltXFcJrTiOaDa/QECpQy9sk1dKpFfkWqcpds+W0=\n"], ["encrypted_value_iv", "B9OJFfMwE0rDfOUS\n"], ["encrypted_value_salt", "_zSisEWOpDfCefmKQ3prfOw==\n"], ["data_encrypting_key_id", 980190965], ["token", "148a86027ccc72db8fc26aa21702dcce"], ["created_at", "2019-05-15 02:15:53.976395"], ["updated_at", "2019-05-15 02:15:53.976395"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "UkIRyxdlO5RrK46HmuNQCeLLIt+fGRplcy87u70Py7NIIY+3hDmhcJKU38B2\nQPmu\n"], ["primary", true], ["created_at", "2019-05-15 02:15:53.984349"], ["updated_at", "2019-05-15 02:15:53.984349"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "GBwx+HHTCy4SLLsm+8QtM1BzsCyczZgCkZ2dnhSeVzI35Ns0da9w0BYcdF3P\n48tU\n"], ["primary", true], ["created_at", "2019-05-15 02:15:53.991515"], ["updated_at", "2019-05-15 02:15:53.991515"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.6ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "xU51a5Fv5ZwQ7g0P0N3n+dscxux+j93Pa1qlIFn2/2S0CZOirSBmtCOoesid\nJ53O\n"], ["primary", true], ["created_at", "2019-05-15 02:15:53.998309"], ["updated_at", "2019-05-15 02:15:53.998309"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.7ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "ebc08701e604d27ee5c24791518e44b6"]]
+  [1m[36mEncryptedString Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "ebc08701e604d27ee5c24791518e44b6"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.6ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "dsozc1iIicAXRtOGf/G1+Y5UBqOn2bsX+kvKzOKPwDI=\n"], ["encrypted_value_iv", "qv5tdTm2cWE05t2t\n"], ["encrypted_value_salt", "_J8Ntf96Z5WgAjZEsDvSzKA==\n"], ["data_encrypting_key_id", 980190968], ["token", "ebc08701e604d27ee5c24791518e44b6"], ["created_at", "2019-05-15 02:15:54.009017"], ["updated_at", "2019-05-15 02:15:54.009017"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "7p0CyR/z+gsz29P6uR62Ike5OETLANXoct0E5pJsX3GEy/dzDt6jjNyk2LcQ\ns5l3\n"], ["primary", true], ["created_at", "2019-05-15 02:15:54.026471"], ["updated_at", "2019-05-15 02:15:54.026471"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.4ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:16:56.250791', '2019-05-15 02:16:56.250791'), (298486374, 'MyString', FALSE, '2019-05-15 02:16:56.250791', '2019-05-15 02:16:56.250791');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:16:56.253276', '2019-05-15 02:16:56.253276'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:16:56.253276', '2019-05-15 02:16:56.253276')[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "fMtEUk1hF+2pGV58Hjqcr2wC5C15m8eV+6jgEvqqCAbQYoVU+B3uPJ6QiEhj\njg43\n"], ["created_at", "2019-05-15 02:16:56.293361"], ["updated_at", "2019-05-15 02:16:56.293361"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "1qxmX6Pf7ly+lfeTlrDcLAlvXBGPD3nbRMSh9hISbj3RkPn3n5ZSVy7CO8CZ\nlFG0\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.389284"], ["updated_at", "2019-05-15 02:16:56.389284"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "i4proyIwFT4BIOjef1C+1EFSbtuJ45CWsYOmcrbjkk/nQzr1jyIcOLy+d8oF\nqeEz\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.397670"], ["updated_at", "2019-05-15 02:16:56.397670"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "BupgS/XkT54tOQOrnzopPbFZs0/mUuiIKCcS22OwUSoY7b5Ch7VdbzOueG5r\nAjUf\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.403614"], ["updated_at", "2019-05-15 02:16:56.403614"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "sn9lTqSFs/sc39od7LSBkm2OK8uxGlk2lCdqotL0XagP8l1jD7Nt2KO2Ggw3\nWSNq\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.410868"], ["updated_at", "2019-05-15 02:16:56.410868"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.5ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "5d36d285edd14a55098a17b4888f992f"]]
+  [1m[36mEncryptedString Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "5d36d285edd14a55098a17b4888f992f"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.2ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "WkxSSFPicPd6dkq8JMiovEjtPQ5JqvYYYlz+R68ejgo=\n"], ["encrypted_value_iv", "5UuaxyFomMjWiKCg\n"], ["encrypted_value_salt", "_NfaMf9LbWwJ0Rs/LcO5qgw==\n"], ["data_encrypting_key_id", 980190967], ["token", "5d36d285edd14a55098a17b4888f992f"], ["created_at", "2019-05-15 02:16:56.450082"], ["updated_at", "2019-05-15 02:16:56.450082"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (2.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.7ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "fHaCg6Du+qf34AQEthMETvQit7a3cyVGy0G2CqrGhAWedyhljsIoPXLe9nc2\nqrYm\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.459156"], ["updated_at", "2019-05-15 02:16:56.459156"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "g1f1EUKdMvlQree+q+ePelJ77H0olcUKJlilYdnABsX2CmZtMi5vVzU84WD1\nfSoH\n"], ["primary", true], ["created_at", "2019-05-15 02:16:56.468027"], ["updated_at", "2019-05-15 02:16:56.468027"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "bff1807f53979b580ba9597dbca3e472"]]
+  [1m[36mEncryptedString Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "bff1807f53979b580ba9597dbca3e472"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.2ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "unb6515lJcmw6IrWw9UY9IQhZOfLp0/DcJ+bUUAgd0c=\n"], ["encrypted_value_iv", "kfjB1MCv4NV4enW4\n"], ["encrypted_value_salt", "_jn6EoYA0VvwUcfRA8bbO1A==\n"], ["data_encrypting_key_id", 980190969], ["token", "bff1807f53979b580ba9597dbca3e472"], ["created_at", "2019-05-15 02:16:56.477381"], ["updated_at", "2019-05-15 02:16:56.477381"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.7ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:18:22.718735', '2019-05-15 02:18:22.718735'), (298486374, 'MyString', FALSE, '2019-05-15 02:18:22.718735', '2019-05-15 02:18:22.718735');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:18:22.723189', '2019-05-15 02:18:22.723189'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:18:22.723189', '2019-05-15 02:18:22.723189')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "KhtK2pzJlVJU1v6HZU38nLg+wY5SYbJNjPlILsAypWGtjI8doP2/gNCgppmq\n4YCH\n"], ["created_at", "2019-05-15 02:18:22.760328"], ["updated_at", "2019-05-15 02:18:22.760328"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.5ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "FQBGGzx6T6nv22kQ1lOGzuZw5Uyy1meCIwzRBJwMysjV7JVgcgon7Zu2qF4k\nLtCU\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.852361"], ["updated_at", "2019-05-15 02:18:22.852361"]]
+  [1m[35m (1.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (2.4ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "BDiE48HNIFPb6R1jOBdmXk/urWdEQ3AKRi8iR6inikKBht2jiugSRBf/wXqJ\nDCJc\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.864672"], ["updated_at", "2019-05-15 02:18:22.864672"]]
+  [1m[35m (1.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (2.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "UuZtf+rHI4zW70r5gdLK1gKY3PWUf3KT4A4z/C67iXgbfUmaKxbMCfNRPsRV\nIell\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.875956"], ["updated_at", "2019-05-15 02:18:22.875956"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.6ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "85e76f2c1dfc1d86a3ed48ac5c9cc7c1"]]
+  [1m[36mEncryptedString Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "85e76f2c1dfc1d86a3ed48ac5c9cc7c1"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.2ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "hB8Wat5L0Z+hYWOPCC+lp//wuyAP8LM8RkqulLahzBk=\n"], ["encrypted_value_iv", "NQ9vxbdCIRW2fzUx\n"], ["encrypted_value_salt", "_F7iqxU1VNK+Wp/Uvvce0Ng==\n"], ["data_encrypting_key_id", 980190966], ["token", "85e76f2c1dfc1d86a3ed48ac5c9cc7c1"], ["created_at", "2019-05-15 02:18:22.908304"], ["updated_at", "2019-05-15 02:18:22.908304"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "2YK6aJOPnjogyMdVIvZfC+ghznmZiweck2MZy1bLcpLeKhG0pDKquS9HlxAR\nMjN7\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.924579"], ["updated_at", "2019-05-15 02:18:22.924579"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (2.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "rxBazNn3Kih5Oj7gPhCJL0RCOotdNE7CXIAyvYErzywDNARn9jpB0TiZk5mP\nR7cJ\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.933785"], ["updated_at", "2019-05-15 02:18:22.933785"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "YQUf3O/85roknDS1fcm3Jb2aoHBTEglXnOrhifIYAKi2P95IAwz1yoEx1iwA\nbOL5\n"], ["primary", true], ["created_at", "2019-05-15 02:18:22.944121"], ["updated_at", "2019-05-15 02:18:22.944121"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.7ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.7ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "fde96852f69ae1da4b7383824297840e"]]
+  [1m[36mEncryptedString Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "fde96852f69ae1da4b7383824297840e"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.0ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "X9AvAqZviSmhr4g1vB9uFLzFcNeXMjI424PzT8kLWXQ=\n"], ["encrypted_value_iv", "iBpq4+LchXOzUiRe\n"], ["encrypted_value_salt", "_LPD+4YjHvW0Bca79D4L3Hg==\n"], ["data_encrypting_key_id", 980190969], ["token", "fde96852f69ae1da4b7383824297840e"], ["created_at", "2019-05-15 02:18:22.957160"], ["updated_at", "2019-05-15 02:18:22.957160"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.1ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:18:35.651790', '2019-05-15 02:18:35.651790'), (298486374, 'MyString', FALSE, '2019-05-15 02:18:35.651790', '2019-05-15 02:18:35.651790');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:18:35.654441', '2019-05-15 02:18:35.654441'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:18:35.654441', '2019-05-15 02:18:35.654441')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.2ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "K2KuduobPaKhmy6xxXahh5WG26KvTn8B3xFWEyzszxrVm5IO5syAmLhe3mT/\ncP1U\n"], ["created_at", "2019-05-15 02:18:35.683713"], ["updated_at", "2019-05-15 02:18:35.683713"]]
+  [1m[35m (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "QP9xeY9OvvgxDtz8sNt9eMvMvwR1uLTwJbdi55VzAR0Ge9Php/9JcRQYGFqa\naYya\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.770160"], ["updated_at", "2019-05-15 02:18:35.770160"]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "a492f761e9ccabee48a4b55266c5a073"]]
+  [1m[36mEncryptedString Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "a492f761e9ccabee48a4b55266c5a073"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.1ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "96CgSddfWp13+Xs5YXh0MnLB87UnEtZxOZnhoOR8kuE=\n"], ["encrypted_value_iv", "SKShJlXR4x2NwPxJ\n"], ["encrypted_value_salt", "_wBBnH9LR1AumbmQxpU2Zsw==\n"], ["data_encrypting_key_id", 980190964], ["token", "a492f761e9ccabee48a4b55266c5a073"], ["created_at", "2019-05-15 02:18:35.795682"], ["updated_at", "2019-05-15 02:18:35.795682"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "S9Cys5u6kXMDcKl8if+t0BrwMNQto/JaDZ/ulA+JRKJXsqWUtvMacE3lndmC\nx4vJ\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.803740"], ["updated_at", "2019-05-15 02:18:35.803740"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "84a11bb1ddd213bf81d17773cc050b8c"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "84a11bb1ddd213bf81d17773cc050b8c"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.1ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "eaArGU/fuJelsvDKV7Syr5ESm/5kmBrJFM4T5Mpzs/Q=\n"], ["encrypted_value_iv", "j4ktndmBHg9I3jBZ\n"], ["encrypted_value_salt", "_oAdt+vYhpDYpUukel1XP0g==\n"], ["data_encrypting_key_id", 980190965], ["token", "84a11bb1ddd213bf81d17773cc050b8c"], ["created_at", "2019-05-15 02:18:35.814231"], ["updated_at", "2019-05-15 02:18:35.814231"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.7ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "Y3Lq3i97mUEanHuKkKNzo/WgHO3dsS6e5FK3mfgIfFqbijFMG8oK400SaI38\n4uh9\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.820525"], ["updated_at", "2019-05-15 02:18:35.820525"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.4ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "xBklj8h6QJCoJpoHv4A6fnBLA26z+K+8o28jXXnX3aLLduwcWeblWrN+l4UQ\nsWQz\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.828146"], ["updated_at", "2019-05-15 02:18:35.828146"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "PeJSN8CI2Fd2UGthtHUXPtww7F54x7CQYDYVkWz3zn8zVjTWIkASsUgVmUvv\n6ddi\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.836777"], ["updated_at", "2019-05-15 02:18:35.836777"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.7ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "QK5uvUJihS9ag30CFp/FcfK/bQ2EZbAeSqmlUvnz+lmcX6AEFpykKBjNCM9h\nuEfE\n"], ["primary", true], ["created_at", "2019-05-15 02:18:35.843219"], ["updated_at", "2019-05-15 02:18:35.843219"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.0ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:20:59.229840', '2019-05-15 02:20:59.229840'), (298486374, 'MyString', FALSE, '2019-05-15 02:20:59.229840', '2019-05-15 02:20:59.229840');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:20:59.233394', '2019-05-15 02:20:59.233394'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:20:59.233394', '2019-05-15 02:20:59.233394')[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "oINVPefmMEPedYxpcO8Ivws2BREQJkoW1wQDgFSQKx43rQQb6u0/+ZpMOJkA\nuyit\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.350640"], ["updated_at", "2019-05-15 02:20:59.350640"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (4.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "5HJY6dXHlWK8gPxTEtmzbWarM9XuOAg617sSXfCtaLQ270O1N+C5Z5kgBVJF\nMBCo\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.365275"], ["updated_at", "2019-05-15 02:20:59.365275"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (2.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.6ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "g8FPzz2l3RErSYAV6ZOX8Qn/QFsfW8zIizhj4vHf7bKDncK6cP3xy0N8Fw6/\nULW3\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.375477"], ["updated_at", "2019-05-15 02:20:59.375477"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (3.4ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.2ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "0c2c064176110de2bb8f21b5e1e1356f"]]
+  [1m[36mEncryptedString Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "0c2c064176110de2bb8f21b5e1e1356f"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.3ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "BoybBggUk8x55lMMywHampacE1KoAibEFc2ga7Pu+nA=\n"], ["encrypted_value_iv", "BZ45SareqJpCtwnB\n"], ["encrypted_value_salt", "_Q7/4PqgxvWUg7ggU1rTl+w==\n"], ["data_encrypting_key_id", 980190965], ["token", "0c2c064176110de2bb8f21b5e1e1356f"], ["created_at", "2019-05-15 02:20:59.409240"], ["updated_at", "2019-05-15 02:20:59.409240"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"0c2c064176110de2bb8f21b5e1e1356f"}
+  [1m[36mEncryptedString Load (1.3ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "0c2c064176110de2bb8f21b5e1e1356f"], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."id" = $1 LIMIT $2[0m  [["id", 980190965], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 2592)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "SqQVEJ+AEXy7FeLWDoPCzFaU2jwNJG38dOokslseqQhfGRjSnefKlv9I0WSf\njq8l\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.441005"], ["updated_at", "2019-05-15 02:20:59.441005"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "bbB4a7tvmWH+pIHRxYs2S7G3x5uALp/OTL4/1EE4y7oqRywxwoa1/zVp3VSz\nf4Gq\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.448963"], ["updated_at", "2019-05-15 02:20:59.448963"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.9ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "4f6e280bc210df8e5d5280a56ef1e43d"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "4f6e280bc210df8e5d5280a56ef1e43d"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.7ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "mpeWWtvuEs7J9wk2otUMW0hgpIhgXOTptEBIqIPAt/c=\n"], ["encrypted_value_iv", "8FNIg5syMfQ/nA/N\n"], ["encrypted_value_salt", "_FDPgWVuK4lzWCCgS9+NXIg==\n"], ["data_encrypting_key_id", 980190967], ["token", "4f6e280bc210df8e5d5280a56ef1e43d"], ["created_at", "2019-05-15 02:20:59.458538"], ["updated_at", "2019-05-15 02:20:59.458538"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.8ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "wNXxwz4Wc/tXDheIP+ZRdHNG9aJSHN1XRaQASkJeYyUxOqQgbiGZ6HMsWryB\nFBSh\n"], ["primary", true], ["created_at", "2019-05-15 02:20:59.466361"], ["updated_at", "2019-05-15 02:20:59.466361"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "ZDXQ/xuUe7nN8GUqS76ir4YXKfw9aFC+ehTn9FVKFOx+qlyI9S78wnqdTXQB\nJESr\n"], ["created_at", "2019-05-15 02:20:59.477569"], ["updated_at", "2019-05-15 02:20:59.477569"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.3ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:21:27.448325', '2019-05-15 02:21:27.448325'), (298486374, 'MyString', FALSE, '2019-05-15 02:21:27.448325', '2019-05-15 02:21:27.448325');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:21:27.451146', '2019-05-15 02:21:27.451146'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:21:27.451146', '2019-05-15 02:21:27.451146')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.5ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "tt+FAGunU65xzFCz8lo4j1Z8odsVHzma23uN6J4UGlIxfgLw4FFUtJjY8JGb\nr7Eh\n"], ["created_at", "2019-05-15 02:21:27.481517"], ["updated_at", "2019-05-15 02:21:27.481517"]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (2.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.7ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "JicOo2l+X4dGxsceQ7W7guJ3VoI1oOIv6LgoDRGRUcqmNdgPxa+kCcmeFY+c\nebx7\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.565529"], ["updated_at", "2019-05-15 02:21:27.565529"]]
+  [1m[35m (1.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "DhUJHxWpJkagcdQurh3GDUzeOSwAumYwqYlPGg0UJ0l5czuSoM58Hd0ZDydc\nzGNq\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.848062"], ["updated_at", "2019-05-15 02:21:27.848062"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (2.0ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "ecc1736b51a79cce091b5c656c06a913"]]
+  [1m[36mEncryptedString Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "ecc1736b51a79cce091b5c656c06a913"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (2.1ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "+l5BUtJncutCwoGm9EwWf5ZBMZvpLBukGdGU6QaVoHY=\n"], ["encrypted_value_iv", "+kzGIjcMT/rhmxrp\n"], ["encrypted_value_salt", "_ljz9eQjwtpT9NA9PMqPM6g==\n"], ["data_encrypting_key_id", 980190965], ["token", "ecc1736b51a79cce091b5c656c06a913"], ["created_at", "2019-05-15 02:21:27.893611"], ["updated_at", "2019-05-15 02:21:27.893611"]]
+  [1m[35m (1.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "0xybdjP4p10aFHuVtS7aBIElJccOfm82tQ5ADcgocHqmE5K5LKNJ12b1UW0s\nvcX9\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.905404"], ["updated_at", "2019-05-15 02:21:27.905404"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.4ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "FnmyWvOR7y7onXrHYNxwxDFL/O0kZabZKcqboiJUC2KJxjA6lFDyIL0SA3je\noqRe\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.916495"], ["updated_at", "2019-05-15 02:21:27.916495"]]
+  [1m[35m (1.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.1ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "7d7b66d6259dcbc506f04a70ab880be8"]]
+  [1m[36mEncryptedString Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "7d7b66d6259dcbc506f04a70ab880be8"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.5ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "kZAtcjqJwXC1nPlgSJNuCxdI0eHtCY4nkL+HSleFrLI=\n"], ["encrypted_value_iv", "Ur8ZtVvbP2M0Gscl\n"], ["encrypted_value_salt", "_29WeSROtj4ICH2jBKZjZ7g==\n"], ["data_encrypting_key_id", 980190967], ["token", "7d7b66d6259dcbc506f04a70ab880be8"], ["created_at", "2019-05-15 02:21:27.930487"], ["updated_at", "2019-05-15 02:21:27.930487"]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"7d7b66d6259dcbc506f04a70ab880be8"}
+  [1m[36mEncryptedString Load (0.9ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "7d7b66d6259dcbc506f04a70ab880be8"], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."id" = $1 LIMIT $2[0m  [["id", 980190967], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 2589)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "gBm0MguRs2l/R5d+ewrGJXeRvx4zO+1Q+Odn5WjZyvylZOMrZ5GztS2dmz3F\nEpk+\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.952008"], ["updated_at", "2019-05-15 02:21:27.952008"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "bSrv1eY7AGHlnVAgmwQ+S7IVG5kuRkBF6WtBqmp0/uFXq/Dtg3xfv23YuWys\nOdMv\n"], ["primary", true], ["created_at", "2019-05-15 02:21:27.958707"], ["updated_at", "2019-05-15 02:21:27.958707"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"does not exist"}
+  [1m[36mEncryptedString Load (0.9ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "does not exist"], ["LIMIT", 1]]
+Filter chain halted as :load_encrypted_string rendered or redirected
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 233)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:22:03.773357', '2019-05-15 02:22:03.773357'), (298486374, 'MyString', FALSE, '2019-05-15 02:22:03.773357', '2019-05-15 02:22:03.773357');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:22:03.776530', '2019-05-15 02:22:03.776530'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:22:03.776530', '2019-05-15 02:22:03.776530')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.2ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "vsZEUhGZLRnoRZQAk8m56G+iO+HvqYPivJRm9xaFKnYAt8vjE5uY5KwsMg0D\nn5JH\n"], ["created_at", "2019-05-15 02:22:03.812340"], ["updated_at", "2019-05-15 02:22:03.812340"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "llpj6XtgkFmqOsDDx/JYI8bSeDkX3uB6bDbY4xDLEizuSs9rlNC8oeVqoZko\nGbEq\n"], ["primary", true], ["created_at", "2019-05-15 02:22:03.910953"], ["updated_at", "2019-05-15 02:22:03.910953"]]
+  [1m[35m (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"does not exist"}
+  [1m[36mEncryptedString Load (1.1ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "does not exist"], ["LIMIT", 1]]
+Filter chain halted as :load_encrypted_string rendered or redirected
+Completed 404 Not Found in 10ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 1980)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.2ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "qW4aSBASyTXZ1jAGPkptm7hQe7wcbe8xuhf6NlPI1+oL6T/K3GLDfnr+Ucsl\n1BIF\n"], ["primary", true], ["created_at", "2019-05-15 02:22:03.934773"], ["updated_at", "2019-05-15 02:22:03.934773"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#destroy as HTML
+  Parameters: {"token"=>"does not exist"}
+  [1m[36mEncryptedString Load (1.7ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "does not exist"], ["LIMIT", 1]]
+Filter chain halted as :load_encrypted_string rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 229)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (2.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.4ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "0M/1++SYMPXWGRZBrQSc1AcMC97iKZB3oOPGyMvxHCkrirzXkau+blPSKKdo\nfg6M\n"], ["primary", true], ["created_at", "2019-05-15 02:22:03.953120"], ["updated_at", "2019-05-15 02:22:03.953120"]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "iwV6Gm7KXhkE0jn1OvKH4Oob075BlXFdMWM21iDs7O+htCX/RD2v2L3WYmCu\nxEYd\n"], ["primary", true], ["created_at", "2019-05-15 02:22:03.966996"], ["updated_at", "2019-05-15 02:22:03.966996"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.2ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "1335325ae8a00514874efb12e3c0a223"]]
+  [1m[36mEncryptedString Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "1335325ae8a00514874efb12e3c0a223"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.6ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "n5nyYHJjigWRo7J7WpgjTjWaTJkl9hwODvvti3cDm8M=\n"], ["encrypted_value_iv", "zQ6lJCBj98ICmTqS\n"], ["encrypted_value_salt", "_gnNxgxqNyrvvkc0OrbizPw==\n"], ["data_encrypting_key_id", 980190967], ["token", "1335325ae8a00514874efb12e3c0a223"], ["created_at", "2019-05-15 02:22:03.995810"], ["updated_at", "2019-05-15 02:22:03.995810"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"1335325ae8a00514874efb12e3c0a223"}
+  [1m[36mEncryptedString Load (1.1ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "1335325ae8a00514874efb12e3c0a223"], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."id" = $1 LIMIT $2[0m  [["id", 980190967], ["LIMIT", 1]]
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 1432)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "lUup6ddR51BQlGExId5VoJjivxc6T3a0kfnC/5W86I34AKmDPUUbXz1Rf0zh\nPIix\n"], ["primary", true], ["created_at", "2019-05-15 02:22:04.012400"], ["updated_at", "2019-05-15 02:22:04.012400"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (2.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.5ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "32G0J1ctU9WOaLDatl5WCarryeUuwyIe2Qe+1z9s8l5rPh3AncPUUA+X4/kt\nor04\n"], ["primary", true], ["created_at", "2019-05-15 02:22:04.021856"], ["updated_at", "2019-05-15 02:22:04.021856"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.5ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "99b558e50f0d78fbcd94070f9cdf12fe"]]
+  [1m[36mEncryptedString Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "99b558e50f0d78fbcd94070f9cdf12fe"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.4ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "D442EwiaPe7vE/aP/yxPJekEJo/2OseToy5oFVGODNs=\n"], ["encrypted_value_iv", "DKqRPj6lY9rQ5pxm\n"], ["encrypted_value_salt", "_sHV1pdnPhb2EGK1W7YU4qQ==\n"], ["data_encrypting_key_id", 980190969], ["token", "99b558e50f0d78fbcd94070f9cdf12fe"], ["created_at", "2019-05-15 02:22:04.037717"], ["updated_at", "2019-05-15 02:22:04.037717"]]
+  [1m[35m (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+Processing by EncryptedStringsController#destroy as HTML
+  Parameters: {"token"=>"99b558e50f0d78fbcd94070f9cdf12fe"}
+  [1m[36mEncryptedString Load (1.3ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "99b558e50f0d78fbcd94070f9cdf12fe"], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Destroy (1.6ms)[0m  [1m[31mDELETE FROM "encrypted_strings" WHERE "encrypted_strings"."id" = $1[0m  [["id", 980190964]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (ActiveRecord: 4.5ms | Allocations: 377)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.3ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-15 02:22:33.800209', '2019-05-15 02:22:33.800209'), (298486374, 'MyString', FALSE, '2019-05-15 02:22:33.800209', '2019-05-15 02:22:33.800209');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:22:33.803904', '2019-05-15 02:22:33.803904'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-15 02:22:33.803904', '2019-05-15 02:22:33.803904')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.3ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["encrypted_key", "QZEx4gbxs7Oj6wnttmL5nARbQ6RB1vp7NrbbyOs9Wv21dBj1Oo5ALe5j/6Xg\n2O0Z\n"], ["created_at", "2019-05-15 02:22:33.848027"], ["updated_at", "2019-05-15 02:22:33.848027"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (2.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "zRxNbh6xpbxcAMeV1CcTWyxKXQLFDqo4oWAcwhk4uxt/5ckdFWteYx9zbP9h\n5RQa\n"], ["primary", true], ["created_at", "2019-05-15 02:22:33.934711"], ["updated_at", "2019-05-15 02:22:33.934711"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (1.2ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "fcd81014f902fe404a44e7d8772ec0c7"]]
+  [1m[36mEncryptedString Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "fcd81014f902fe404a44e7d8772ec0c7"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.5ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "gucE3DPiJ4j2jcGVWvSsFvfhFuLbsFZrjg4ism7ev3E=\n"], ["encrypted_value_iv", "qocX73AK/re+wPqS\n"], ["encrypted_value_salt", "_03fD0qLpEoNXJiO3PkKmeQ==\n"], ["data_encrypting_key_id", 980190964], ["token", "fcd81014f902fe404a44e7d8772ec0c7"], ["created_at", "2019-05-15 02:22:33.967928"], ["updated_at", "2019-05-15 02:22:33.967928"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"fcd81014f902fe404a44e7d8772ec0c7"}
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "fcd81014f902fe404a44e7d8772ec0c7"], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 2589)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "BqV1oREBN+7sDOEg/Brvl7XmijceoT1zjdvzAyLhLVdKE0XnVseWi6rEOKqM\nbX8f\n"], ["primary", true], ["created_at", "2019-05-15 02:22:33.988624"], ["updated_at", "2019-05-15 02:22:33.988624"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#destroy as HTML
+  Parameters: {"token"=>"does not exist"}
+  [1m[36mEncryptedString Load (1.3ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "does not exist"], ["LIMIT", 1]]
+Filter chain halted as :load_encrypted_string rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 233)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (0.9ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "QXDUthbPeDDCV5G0ePs3PzeLQNr+ouit8bTkv5BmT5/uafvEO7txROcnD70F\nqZUY\n"], ["primary", true], ["created_at", "2019-05-15 02:22:34.006514"], ["updated_at", "2019-05-15 02:22:34.006514"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+Processing by EncryptedStringsController#create as HTML
+  Parameters: {"encrypted_string"=>{"value"=>""}}
+  [1m[36mDataEncryptingKey Load (1.1ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (4.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "08f1c16762d5ad2f335197116ccc1ab8"]]
+  [1m[36mEncryptedString Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "08f1c16762d5ad2f335197116ccc1ab8"], ["LIMIT", 1]]
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 36ms (Views: 0.1ms | ActiveRecord: 12.5ms | Allocations: 4179)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "lBLq3qByTXMUsA1Dn8WEdY2rOhLwmpmUCp8e/rqfLwd2FKrlXMh+8KR/26dm\n6/QU\n"], ["primary", true], ["created_at", "2019-05-15 02:22:34.052823"], ["updated_at", "2019-05-15 02:22:34.052823"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Load (0.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (0.8ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "a99af7b5e45a7ef764c0297af3f254d7"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "a99af7b5e45a7ef764c0297af3f254d7"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.1ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "cLmBpaPlgsOYqLNvDzZkic0YXhqv5suRjFY7xavrELg=\n"], ["encrypted_value_iv", "+BtY/zBxjued9QZ8\n"], ["encrypted_value_salt", "_mgY6IcQLXAYP0XLr83H+3g==\n"], ["data_encrypting_key_id", 980190967], ["token", "a99af7b5e45a7ef764c0297af3f254d7"], ["created_at", "2019-05-15 02:22:34.062891"], ["updated_at", "2019-05-15 02:22:34.062891"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+Processing by EncryptedStringsController#destroy as HTML
+  Parameters: {"token"=>"a99af7b5e45a7ef764c0297af3f254d7"}
+  [1m[36mEncryptedString Load (1.2ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "a99af7b5e45a7ef764c0297af3f254d7"], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Destroy (0.9ms)[0m  [1m[31mDELETE FROM "encrypted_strings" WHERE "encrypted_strings"."id" = $1[0m  [["id", 980190964]]
+  [1m[35m (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (ActiveRecord: 4.0ms | Allocations: 377)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.0ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "rg6svZ+qmJC1Ea7eHLCgDg0H1xCeo+8uRCW4LUFB43taSVIupjNbkwMLNi/S\nIB4p\n"], ["primary", true], ["created_at", "2019-05-15 02:22:34.077731"], ["updated_at", "2019-05-15 02:22:34.077731"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EncryptedStringsController#show as HTML
+  Parameters: {"token"=>"does not exist"}
+  [1m[36mEncryptedString Load (1.5ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "does not exist"], ["LIMIT", 1]]
+Filter chain halted as :load_encrypted_string rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 229)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mDataEncryptingKey Create (1.1ms)[0m  [1m[32mINSERT INTO "data_encrypting_keys" ("encrypted_key", "primary", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_key", "q0FsBu1Jan1e/QwqBshjY6Xn4yJHLUe6kIwFd6D7FVdlAwpopwat8wZX2RrT\nWfay\n"], ["primary", true], ["created_at", "2019-05-15 02:22:34.088519"], ["updated_at", "2019-05-15 02:22:34.088519"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+Processing by EncryptedStringsController#create as HTML
+  Parameters: {"encrypted_string"=>{"value"=>"to encrypt"}}
+  [1m[36mDataEncryptingKey Load (1.0ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEncryptedString Load (1.0ms)[0m  [1m[34mSELECT "encrypted_strings".* FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1[0m  [["token", "10cc7790a4bc5807758c93cc046444a9"]]
+  [1m[36mEncryptedString Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "encrypted_strings" WHERE "encrypted_strings"."token" = $1 LIMIT $2[0m  [["token", "10cc7790a4bc5807758c93cc046444a9"], ["LIMIT", 1]]
+  [1m[36mEncryptedString Create (1.0ms)[0m  [1m[32mINSERT INTO "encrypted_strings" ("encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["encrypted_value", "shnzAbOFGqypE0aAbZjzVba3B+QTUgRge5E=\n"], ["encrypted_value_iv", "do8PillOY+Ets4KA\n"], ["encrypted_value_salt", "_CjMByqNfibQuhO7EXMWRXA==\n"], ["data_encrypting_key_id", 980190969], ["token", "10cc7790a4bc5807758c93cc046444a9"], ["created_at", "2019-05-15 02:22:34.101489"], ["updated_at", "2019-05-15 02:22:34.101489"]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 1144)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "encrypted_strings"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
