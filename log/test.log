@@ -1664,3 +1664,936 @@ Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 1144
 EncryptedStringTest: test_Missing_tests!_Please_fix
 ---------------------------------------------------
   [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (10.3ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:39:56.243800', '2019-05-18 22:39:56.243800'), (298486374, 'MyString', FALSE, '2019-05-18 22:39:56.243800', '2019-05-18 22:39:56.243800');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:39:56.252455', '2019-05-18 22:39:56.252455'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:39:56.252455', '2019-05-18 22:39:56.252455')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+  [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+DataEncryptingKeyTest: test_.generate!
+--------------------------------------
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_encrypting_keys"[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+EncryptedStringTest: test_Missing_tests!_Please_fix
+---------------------------------------------------
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_404_for_invalid_token
+----------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_saves_new_EncryptedString
+---------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_removes_the_token_from_the_database
+----------------------------------------------------------------------------------------
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_get_#show_returns_the_decrypted_value
+--------------------------------------------------------------------------
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_POST_#create_returns_invalud_when_value_does_not_exist
+-------------------------------------------------------------------------------------------
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+EncryptedStringsControllerTest: test_delete_#destroy_returns_404_for_invalid_token
+----------------------------------------------------------------------------------
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:40:27.844197', '2019-05-18 22:40:27.844197'), (298486374, 'MyString', FALSE, '2019-05-18 22:40:27.844197', '2019-05-18 22:40:27.844197');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:40:27.847256', '2019-05-18 22:40:27.847256'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:40:27.847256', '2019-05-18 22:40:27.847256')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.1ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:41:03.726718', '2019-05-18 22:41:03.726718'), (298486374, 'MyString', FALSE, '2019-05-18 22:41:03.726718', '2019-05-18 22:41:03.726718');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:41:03.730397', '2019-05-18 22:41:03.730397'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:41:03.730397', '2019-05-18 22:41:03.730397')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+  [1m[35m (3.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.5ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:41:45.647209', '2019-05-18 22:41:45.647209'), (298486374, 'MyString', FALSE, '2019-05-18 22:41:45.647209', '2019-05-18 22:41:45.647209');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:41:45.650120', '2019-05-18 22:41:45.650120'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:41:45.650120', '2019-05-18 22:41:45.650120')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 7d6f12cb-5527-4d24-acbf-86509b75940d) to Async(default)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 765)
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+[ActiveJob] [KeyRotationJob] [7d6f12cb-5527-4d24-acbf-86509b75940d] Performing KeyRotationJob (Job ID: 7d6f12cb-5527-4d24-acbf-86509b75940d) from Async(default) enqueued at 2019-05-18T22:41:45Z
+[ActiveJob] [KeyRotationJob] [7d6f12cb-5527-4d24-acbf-86509b75940d] Performed KeyRotationJob (Job ID: 7d6f12cb-5527-4d24-acbf-86509b75940d) from Async(default) in 0.96ms
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.4ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:43:02.719928', '2019-05-18 22:43:02.719928'), (298486374, 'MyString', FALSE, '2019-05-18 22:43:02.719928', '2019-05-18 22:43:02.719928');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:43:02.732532', '2019-05-18 22:43:02.732532'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:43:02.732532', '2019-05-18 22:43:02.732532')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 4e7db78e-add0-4443-94fd-1bf4826b669c) to Async(default)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 765)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+[ActiveJob] [KeyRotationJob] [4e7db78e-add0-4443-94fd-1bf4826b669c] Performing KeyRotationJob (Job ID: 4e7db78e-add0-4443-94fd-1bf4826b669c) from Async(default) enqueued at 2019-05-18T22:43:02Z
+[ActiveJob] [KeyRotationJob] [4e7db78e-add0-4443-94fd-1bf4826b669c] Performed KeyRotationJob (Job ID: 4e7db78e-add0-4443-94fd-1bf4826b669c) from Async(default) in 0.42ms
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:44:22.377154', '2019-05-18 22:44:22.377154'), (298486374, 'MyString', FALSE, '2019-05-18 22:44:22.377154', '2019-05-18 22:44:22.377154');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:44:22.380229', '2019-05-18 22:44:22.380229'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:44:22.380229', '2019-05-18 22:44:22.380229')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 6586ab06-1e2f-46ee-9204-307c2b14a571) to Async(default)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 765)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.0ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:44:39.830542', '2019-05-18 22:44:39.830542'), (298486374, 'MyString', FALSE, '2019-05-18 22:44:39.830542', '2019-05-18 22:44:39.830542');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:44:39.833940', '2019-05-18 22:44:39.833940'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:44:39.833940', '2019-05-18 22:44:39.833940')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: aad4de3d-c7b0-4766-bd7f-200f68cc2e13) to Async(default)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 768)
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.3ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:51:49.000918', '2019-05-18 22:51:49.000918'), (298486374, 'MyString', FALSE, '2019-05-18 22:51:49.000918', '2019-05-18 22:51:49.000918');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:51:49.004528', '2019-05-18 22:51:49.004528'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:51:49.004528', '2019-05-18 22:51:49.004528')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: b791ebb7-2c37-48f7-8248-e9a10045cbba) to Async(default)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 765)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:52:11.939944', '2019-05-18 22:52:11.939944'), (298486374, 'MyString', FALSE, '2019-05-18 22:52:11.939944', '2019-05-18 22:52:11.939944');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:52:11.944693', '2019-05-18 22:52:11.944693'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:52:11.944693', '2019-05-18 22:52:11.944693')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 872b048b-1cc3-4cc3-b16f-8a410e722dd0) to Async(default)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 768)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:52:36.671130', '2019-05-18 22:52:36.671130'), (298486374, 'MyString', FALSE, '2019-05-18 22:52:36.671130', '2019-05-18 22:52:36.671130');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:52:36.673961', '2019-05-18 22:52:36.673961'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:52:36.673961', '2019-05-18 22:52:36.673961')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: acd6f17e-a274-40b7-a0f8-688b4e2359c8) to Async(default)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 765)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.5ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (3.8ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:54:28.868812', '2019-05-18 22:54:28.868812'), (298486374, 'MyString', FALSE, '2019-05-18 22:54:28.868812', '2019-05-18 22:54:28.868812');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:54:28.878613', '2019-05-18 22:54:28.878613'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:54:28.878613', '2019-05-18 22:54:28.878613')[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 56b6ce74-a311-4bda-89fd-0c6627c5a2c5) to Async(default)
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 768)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" DISABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.2ms)[0m  [1m[31mDELETE FROM "data_encrypting_keys";
+DELETE FROM "encrypted_strings";
+INSERT INTO "data_encrypting_keys" ("id", "encrypted_key", "primary", "created_at", "updated_at") VALUES (980190962, 'MyString', FALSE, '2019-05-18 22:54:44.847838', '2019-05-18 22:54:44.847838'), (298486374, 'MyString', FALSE, '2019-05-18 22:54:44.847838', '2019-05-18 22:54:44.847838');
+INSERT INTO "encrypted_strings" ("id", "encrypted_value", "encrypted_value_iv", "encrypted_value_salt", "data_encrypting_key_id", "token", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:54:44.853775', '2019-05-18 22:54:44.853775'), (298486374, 'MyString', 'MyString', 'MyString', NULL, 'MyString', '2019-05-18 22:54:44.853775', '2019-05-18 22:54:44.853775')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "data_encrypting_keys" ENABLE TRIGGER ALL;ALTER TABLE "encrypted_strings" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+DataEncryptingKeysControllerTest: test_POST_#rotate_enqueues_KeyRotationJob
+---------------------------------------------------------------------------
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 396b64d5-e07b-4869-b89e-29286f54ea64) to Async(default)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 768)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-18 20:47:19 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: ca1ab1de-1a00-4ee2-a372-a915cd5b1f27) to Test(default)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 250)
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-18 20:47:46 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: d5a1c5cb-d699-40e6-a7be-64ac10c75a4a) to Test(key_rotation)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 250)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-18 20:47:56 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 319b31d4-bf0c-4c0b-b32c-4d8249c9f8f3) to Test(key_rotation)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 250)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (11.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 00:47:02 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 500 Internal Server Error in 2290ms (ActiveRecord: 0.0ms | Allocations: 328)
+  [1m[35m (2.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 00:47:04 -0400
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 00:48:17 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 500 Internal Server Error in 1172ms (ActiveRecord: 0.0ms | Allocations: 328)
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 00:48:18 -0400
+  [1m[35m (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 00:49:01 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 328)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 00:49:01 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 250)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:02:13 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 500 Internal Server Error in 1174ms (ActiveRecord: 0.0ms | Allocations: 328)
+  [1m[35m (3.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:04:27 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 500 Internal Server Error in 1179ms (ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:05:15 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 6feb7f13-634d-4d91-812e-855c64ac4013) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:06:02 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 32fd4aaa-14ef-4fc6-8852-03c0af0d3072) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:06:02 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:06:16 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 89e92980-4711-42bc-aa61-bea173fb9ec7) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:06:16 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:06:32 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: c8d699b2-e222-4385-90dc-7ae6d856b0a1) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:06:32 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:08:04 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 043f3606-e765-4bfa-855f-8406915a5d32) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:08:04 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:10:26 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 78159134-4682-477e-85f9-d21058fa4eb0) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:10:26 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:10:26 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:10:26 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:11:19 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: cc67a6a7-c324-42a0-9c08-217731c5a21d) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 398)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:11:56 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: d8e3f6ad-db24-4f8e-b824-04e1dbb41a3a) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:11:56 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:56 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:56 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:11:56 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: ed0f5847-bf5e-472e-8bf8-85d089de40c6) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:12:19 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 781f8a57-c0df-4fd1-82c0-a4ca8764bc7c) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:09 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: e88db496-37bf-42af-b4ac-54dc0ef12b2b) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:44:28 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 4a861929-10cf-49d4-b3e3-f9c76d68065d) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 0f76c93f-726e-402a-a7dd-bce6475cf2dc) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:47:44 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 71550544-ab39-481e-b8d5-09f65a1cb633) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:48:05 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: e6dd80ee-6bd7-49fa-a435-9cde4d39fc9d) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (21.9ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:50:04 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 35a2b140-f706-4fa9-a277-5a2407d7339f) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (3.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (3.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:52:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: f9b676e2-6194-4109-86e4-26b436c9b071) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.3ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:54:10 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDataEncryptingKey Load (6.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 6b4f7c86-5fcb-4cea-a594-301b4ffd68d9) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2010)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:55:35 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDataEncryptingKey Load (0.8ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:57:47 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+[ActiveJob] Enqueued KeyRotationJob (Job ID: 6d7693ed-7e6b-4cc4-a83b-abe2dc7d75f2) to Test(key_rotation)
+No template found for DataEncryptingKeysController#rotate, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2008)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:57:47 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 473)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+Started POST "/data_encrypting_keys/rotate" for 127.0.0.1 at 2019-05-20 01:57:48 -0400
+Processing by DataEncryptingKeysController#rotate as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 506)
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:57:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:57:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 370)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:57:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 369)
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDataEncryptingKey Load (1.0ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.1ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.2ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.5ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.9ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.3ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.0ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (1.1ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+  [1m[36mDataEncryptingKey Load (2.0ms)[0m  [1m[34mSELECT "data_encrypting_keys".* FROM "data_encrypting_keys" WHERE "data_encrypting_keys"."primary" = $1 LIMIT $2[0m  [["primary", true], ["LIMIT", 1]]
+Started GET "/data_encrypting_keys/status" for 127.0.0.1 at 2019-05-20 01:57:48 -0400
+Processing by DataEncryptingKeysController#status as HTML
+Completed 500 Internal Server Error in 1178ms (ActiveRecord: 0.0ms | Allocations: 294)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m

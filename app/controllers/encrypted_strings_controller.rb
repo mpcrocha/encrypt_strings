@@ -1,6 +1,6 @@
 class EncryptedStringsController < ApplicationController
 
-  before_action :load_encrypted_string, only: [:show, :destroy]
+  before_action :load_encrypted_string, only: [:index, :destroy]
 
   def create
     @encrypted_string = EncryptedString.new(value: encrypted_string_params[:value])
@@ -12,7 +12,7 @@ class EncryptedStringsController < ApplicationController
     end
   end
 
-  def show
+  def index
     render json: { value: @encrypted_string.value }
   end
 
@@ -24,9 +24,9 @@ class EncryptedStringsController < ApplicationController
   private
 
   def load_encrypted_string
-    @encrypted_string = EncryptedString.find_by(token: params[:token])
+    @encrypted_string = EncryptedString.find_by(token: params[:token].to_s)
     if @encrypted_string.nil?
-      render json: { messsage: "No entry found for token #{params[:token]}" },
+       render json: { messsage: "No entry found for token #{params[:token]}" },
              status: :not_found
     end
   end

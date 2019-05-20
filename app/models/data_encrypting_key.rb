@@ -6,7 +6,7 @@ class DataEncryptingKey < ActiveRecord::Base
   validates :key, presence: true
 
   def self.primary
-    find_by(primary: true)
+    find_by(primary: true) || DataEncryptingKey.new(key: ENV['KEY_ENCRYPTING_KEY'].to_s)
   end
 
   def self.generate!(attrs={})
@@ -14,7 +14,7 @@ class DataEncryptingKey < ActiveRecord::Base
   end
 
   def key_encrypting_key
-    ENV['KEY_ENCRYPTING_KEY']
+    ENV['KEY_ENCRYPTING_KEY'].to_s
   end
 end
 

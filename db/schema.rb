@@ -15,18 +15,18 @@ ActiveRecord::Schema.define(version: 2017_07_18_202445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "data_encrypting_keys", id: :serial, force: :cascade do |t|
+  create_table "data_encrypting_keys", force: :cascade do |t|
     t.string "encrypted_key"
     t.boolean "primary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "encrypted_strings", id: :serial, force: :cascade do |t|
+  create_table "encrypted_strings", force: :cascade do |t|
     t.string "encrypted_value"
     t.string "encrypted_value_iv"
     t.string "encrypted_value_salt"
-    t.integer "data_encrypting_key_id"
+    t.bigint "data_encrypting_key_id"
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
